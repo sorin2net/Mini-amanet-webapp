@@ -4,6 +4,15 @@ O aplicație web completă de tip marketplace, construită cu Node.js și Expres
 
 ---
 
+## Profesor coordonator și student
+
+| Rol | Nume |
+|---|---|
+| Profesor coordonator | *(de completat)* |
+| Student | *(de completat)* |
+
+---
+
 ## Cuprins
 
 - [Descriere generală](#descriere-generală)
@@ -82,34 +91,48 @@ Accesibil exclusiv utilizatorilor cu rolul `Administrator`, protejat atât la ni
 ## Capturi de ecran
 
 ### Pagina principală — vizitator
+Utilizatorul neautentificat vede grila de produse cu imagini, denumiri, descrieri și prețuri. Butonul „Adaugă în coș" este înlocuit cu un mesaj care îl îndeamnă să se logheze. Este disponibil și accesul la quiz fără cont.
+
 ![Pagina principală](public/screenshots/welcome_andSomeProducts.jpg)
 
 ### Mai multe produse și footer-ul cu disclaimerul
+Continuarea grilei de produse, cu ultimele modele din catalog. În subsolul paginii se află disclaimer-ul care dezvăluie, pentru cei atenți, că toate articolele sunt machete de colecție la scară redusă — nu vehicule reale.
+
 ![Produse și footer](public/screenshots/more_products_andFooter.jpg)
 
 ### Autentificare
+Formularul de login cu câmpuri pentru username și parolă. Erorile (utilizator greșit, parolă incorectă, IP blocat) sunt afișate printr-un banner roșu deasupra formularului. De aici se poate naviga și spre pagina de creare cont.
+
 ![Autentificare](public/screenshots/authentification.jpg)
 
 ### Creare cont
+Formularul de înregistrare solicită nume, prenume, username și parolă. Toate câmpurile sunt sanitizate pe server înainte de procesare, iar parola este stocată exclusiv ca hash bcrypt — niciodată în clar.
+
 ![Creare cont](public/screenshots/create_account.jpg)
 
 ### Pagina principală — admin autentificat
-Administratorul vede zona de administrare cu butoanele de gestionare a bazei de date și butonul „Adaugă în coș" pe fiecare produs.
+Când un Administrator este logat, header-ul afișează numele complet și rolul său. Pe pagina principală apare zona de administrare cu trei butoane: creare tabelă, încărcare date inițiale și adăugare produs nou. Pe fiecare card de produs devine vizibil butonul „Adaugă în coș".
 
 ![Admin autentificat](public/screenshots/admin_logged_in.jpg)
 
 ### Coș de cumpărături
+Pagina coșului grupează produsele adăugate, afișând imaginea, prețul per bucată și cantitatea. Butoanele `+` și `-` modifică cantitatea direct din pagină, iar totalul se recalculează automat. De aici se poate finaliza comanda sau reveni în magazin.
+
 ![Coș de cumpărături](public/screenshots/produts_in_cart.jpg)
 
 ### Confirmare comandă
+După apăsarea butonului „Finalizează Comanda", coșul este golit din sesiune și utilizatorul este redirecționat înapoi la pagina coșului cu un banner verde de confirmare. Un mesaj îl invită să continue cumpărăturile.
+
 ![Comandă plasată](public/screenshots/ordered_placed.jpg)
 
 ### Rezultate quiz
-Fiecare răspuns este marcat cu verde (corect) sau roșu (greșit), cu badge-uri explicite pentru răspunsul corect și alegerea utilizatorului.
+Pagina de rezultate afișează întrebările una câte una, cu toate variantele de răspuns. Varianta corectă este marcată în verde cu badge-ul „Răspuns Corect", iar alegerea greșită a utilizatorului este marcată în roșu cu badge-ul „Alegerea ta". Scorul maxim este salvat automat în contul utilizatorului dacă este mai bun decât cel anterior.
 
 ![Rezultate quiz](public/screenshots/quiz.jpg)
 
 ### Blocare IP — protecție brute force
+Dacă un IP acumulează prea multe tentative eșuate de login sau accesează în mod repetat rute inexistente, serverul returnează un mesaj `HTTP 429` cu timpul exact rămas până la deblocare. Blocarea crește progresiv cu fiecare nouă tentativă.
+
 ![IP blocat](public/screenshots/ip_block_brute_force.jpg)
 
 ---
@@ -255,15 +278,6 @@ node reset_blacklist.js
 ```
 
 Util în scenarii de testare sau dacă propriul IP a fost blocat accidental în timpul dezvoltării.
-
----
-
-## Profesor coordonator și student
-
-| Rol | Nume |
-|---|---|
-| Profesor coordonator | *(de completat)* |
-| Student | *(de completat)* |
 
 ---
 
