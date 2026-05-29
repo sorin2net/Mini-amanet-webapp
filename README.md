@@ -10,7 +10,7 @@ O aplicație web completă de tip marketplace, construită cu Node.js și Expres
 |---|---|
 | Profesor coordonator | *Bărbuța Delia* |
 | Student | *Dumitriu Denis* |
-
+**🌍 [Live Demo ](https://mini-amanet-webapp.onrender.com/)**
 ---
 
 ## Cuprins
