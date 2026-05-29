@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 const csrf = require('csurf');
 const csrfProtection = csrf();
+const path = require('path');
 
 const app = express();
 const port = 6789;
@@ -60,8 +61,9 @@ const db = new sqlite3.Database('./cumparaturi.db', (err) => {
 });
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -343,7 +345,7 @@ app.post('/finalizare-comanda', (req, res) => {
 
 app.get('/chestionar', (req, res) => {
     //citire asincrona cu readFile, sincron era cu readFileSync 
-    fs.readFile('intrebari.json', 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname, 'intrebari.json'), 'utf8', (err, data) => {
         if (err) return res.status(500).send('Eroare.');
         res.render('chestionar', { intrebari: JSON.parse(data) });
         //trimit cu render in ejs si folosesc json.parse ca sa fac din string in array de obiecte
@@ -351,7 +353,7 @@ app.get('/chestionar', (req, res) => {
 });
 
 app.post('/rezultat-chestionar', (req, res) => {
-    fs.readFile('intrebari.json', 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname, 'intrebari.json'), 'utf8', (err, data) => {
         if (err) return res.status(500).send('Eroare.');
         const listaIntrebari = JSON.parse(data);
         const raspunsuriUtilizator = req.body;
@@ -491,6 +493,7 @@ app.use((req, res) => {
 });
 
 app.listen(port, () => console.log(`Serverul rulează la adresa http://localhost:${port}/`));
+module.exports = app;
 
 process.on('SIGINT', () => {
     db.close((err) => {
