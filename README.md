@@ -8,8 +8,8 @@ O aplicație web completă de tip marketplace, construită cu Node.js și Expres
 
 | Rol | Nume |
 |---|---|
-| Profesor coordonator | *(de completat)* |
-| Student | *(de completat)* |
+| Profesor coordonator | *Bărbuța Delia* |
+| Student | *Dumitriu Denis* |
 
 ---
 
