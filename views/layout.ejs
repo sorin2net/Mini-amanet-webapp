@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Amanet</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Mini Amanet</h1>
+        
+        <div style="margin-top: 15px; font-size: 14px; color: #aaa;">
+            <% if (utilizatorLogat) { %>
+                Autentificat ca: <strong><%= utilizatorLogat.prenume %> <%= utilizatorLogat.nume %> (<%= utilizatorLogat.rol %>)</strong> | 
+                <a href="/delogare" style="color: #ef4444; text-decoration: none; font-weight: bold;">De-logare</a>
+            <% } else { %>
+                Vizitator | <a href="/autentificare" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">Autentificare</a>
+            <% } %>
+        </div>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+    <footer style="margin-top: 50px; padding: 20px; border-top: 1px solid var(--border-color); text-align: center;">
+        <p style="font-size: 11px; color: #555; max-width: 600px; margin: 0 auto; line-height: 1.4;">
+            <strong>Disclaimer:</strong> Toate articolele prezentate pe acest website, inclusiv cele din secțiunea de vânzare, sunt exclusiv 
+            <em>machete de colecție</em> realizate la scară redusă. Prețurile și specificațiile se referă la obiecte destinate colecționarilor 
+            și nu la vehicule de dimensiuni reale. Imaginile sunt utilizate cu titlu de prezentare a fidelității reproducerii.
+        </p>
+        <p style="font-size: 10px; color: #333; margin-top: 10px;">&copy; 2026 Mini Amanet. Toate drepturile rezervate.</p>
+    </footer>
+</body>
+</html>

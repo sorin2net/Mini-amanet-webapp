@@ -1,0 +1,55 @@
+<% 
+  let imaginePremiu = "";
+  if (corecte <= 4) {
+      imaginePremiu = "mini_cooper_1.jpg";
+  } else if (corecte <= 8) {
+      imaginePremiu = "mini_cooper_2.jpg";
+  } else {
+      imaginePremiu = "mini_cooper_3.jpg";
+  }
+%>
+
+<div class="results-wrapper">
+    <div class="score-header">
+        <h2>Rezultatele Evaluării</h2>
+        <p class="score-text">Ai răspuns corect la <strong><%= corecte %></strong> din <%= total %> întrebări.</p>
+    </div>
+
+    <div class="premium-image-container">
+        <img src="/images/<%= imaginePremiu %>" alt="Model Mini Cooper" class="premium-image">
+    </div>
+
+    <div class="detailed-results">
+        <% detalii.forEach(function(detaliu) { %>
+            <div class="question-card <%= detaliu.esteCorect ? 'card-success' : 'card-error' %>">
+                <h4 class="question-title"><%= detaliu.intrebare %></h4>
+                
+                <div class="options-container">
+                    <% detaliu.variante.forEach(function(varianta, indexVarianta) { 
+                        let optionClass = "option-neutral";
+                        let badgeText = "";
+                        
+                        if (indexVarianta === detaliu.corect) {
+                            optionClass = "option-correct";
+                            badgeText = "Răspuns Corect";
+                        } else if (indexVarianta === detaliu.raspunsDat && !detaliu.esteCorect) {
+                            optionClass = "option-wrong";
+                            badgeText = "Alegerea ta";
+                        }
+                    %>
+                        <div class="option-row <%= optionClass %>">
+                            <span class="option-text"><%= varianta %></span>
+                            <% if (badgeText) { %>
+                                <span class="badge"><%= badgeText %></span>
+                            <% } %>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <div class="action-section">
+        <a href="/chestionar" class="btn-primary">Refaceți Evaluarea</a>
+    </div>
+</div>

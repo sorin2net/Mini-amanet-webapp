@@ -1,0 +1,147 @@
+<div class="results-wrapper" style="text-align: center;">
+    <h2 style="color: var(--accent-color);">Mini Collector Hub: Ediții de Colecție</h2>
+
+    <% if (cookieUtilizator) { %>
+        <h3 style="color: var(--success-color);">Bine ai venit înapoi, <%= cookieUtilizator %>!</h3>
+        <% } %>
+
+            <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
+                <a href="/chestionar" class="btn-primary" style="width: auto;">Fă Quiz-ul Mini</a>
+                <% if (utilizatorLogat) { %>
+                    <a href="/vizualizare-cos" class="btn-primary"
+                        style="background-color: var(--success-color); width: auto;">🛒 Vezi Coșul</a>
+                    <% } %>
+            </div>
+            <!--Butoanele de administrare-->
+            <% if (utilizatorLogat && utilizatorLogat.rol==='Administrator' ) { %>
+                <div
+                    style="margin-bottom: 40px; padding: 15px; border: 1px dashed var(--border-color); display: inline-block;">
+                    <p style="margin-top: 0; color: var(--text-muted); font-size: 14px;">Zona de Administrare</p>
+
+                    <a href="/creare-bd" class="btn-primary"
+                        style="background-color: #555; width: auto; display: inline-block; padding: 8px 15px; font-size: 14px;">1.
+                        Creare BD</a>
+
+                    <a href="/inserare-bd" class="btn-primary"
+                        style="background-color: #555; width: auto; display: inline-block; padding: 8px 15px; font-size: 14px;">2.
+                        Încărcare BD</a>
+
+                    <a href="/admin" class="btn-primary"
+                        style="background-color: var(--accent-color); color: #000; width: auto; display: inline-block; padding: 8px 15px; font-size: 14px;">3.
+                        Adaugă Produs</a>
+                </div>
+                <% } %>
+
+                    <h3
+                        style="border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 5px;">
+                        Produse Disponibile</h3>
+
+                    <div class="products-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <% if (typeof produse !=='undefined' && produse.length> 0) { %>
+                            <% produse.forEach(function(produs) { %>
+                                <div class="product-card"
+                                    style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; text-align: left;">
+                                    <img src="/images/<%= produs.imagine %>" alt="<%= produs.nume %>"
+                                        style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
+                                    <h4 style="margin: 0 0 10px 0; color: var(--text-main);">
+                                        <%= produs.nume %>
+                                    </h4>
+                                    <p
+                                        style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4;">
+                                        <%= produs.descriere %>
+                                    </p>
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <strong style="color: var(--accent-color); font-size: 18px;">
+                                            <%= produs.pret %> €
+                                        </strong>
+
+                                        <% if (utilizatorLogat) { %>
+                                            <form action="/adaugare-cos" method="POST" class="form-adaugare-cos"
+                                                style="margin: 0; padding: 0; box-shadow: none; border: none; background: transparent;">
+                                                <input type="hidden" name="id" value="<%= produs.id %>">
+                                                <button type="submit"
+                                                    style="padding: 8px 12px; font-size: 13px; width: auto;">Adaugă în
+                                                    coș</button>
+                                            </form>
+                                            <% } else { %>
+                                                <span style="font-size: 12px; color: var(--text-muted);">Loghează-te
+                                                    pentru a cumpăra</span>
+                                                <% } %>
+                                    </div>
+                                </div>
+                                <% }); %>
+                                    <% } else { %>
+                                        <p style="grid-column: 1 / -1; color: var(--text-muted);">Nu există produse.
+                                            Apasă butoanele de creare/încărcare BD de mai sus.</p>
+                                        <% } %>
+                    </div>
+</div>
+<style>
+    #toast-cos {
+        visibility: hidden;
+        min-width: 250px;
+        background-color: var(--success-color);
+        /* Folosim verdele tau din CSS */
+        color: #000;
+        text-align: center;
+        border-radius: 8px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1000;
+        right: 30px;
+        bottom: 30px;
+        font-weight: bold;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        transform: translateY(20px);
+    }
+
+    #toast-cos.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<div id="toast-cos">Model adăugat cu succes!</div>
+
+<script>
+    const formulareAdaugare = document.querySelectorAll('.form-adaugare-cos');
+
+    formulareAdaugare.forEach(form => {
+        form.addEventListener('submit', async function (eveniment) {
+            eveniment.preventDefault();
+
+            const formData = new FormData(this);
+            const dateTrimise = new URLSearchParams(formData);
+
+            try {
+                const raspuns = await fetch('/adaugare-cos', {
+                    method: 'POST',
+                    body: dateTrimise,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                const rezultat = await raspuns.json();
+
+                if (rezultat.status === 'eroare' && rezultat.redirect) {
+                    window.location.href = rezultat.redirect;
+                } else if (rezultat.status === 'succes') {
+                    const toast = document.getElementById("toast-cos");
+                    toast.innerText = rezultat.mesaj;
+                    toast.classList.add("show");
+
+                    setTimeout(() => {
+                        toast.classList.remove("show");
+                    }, 2000);
+                }
+            } catch (eroare) {
+                console.error('Eroare la adăugarea în coș:', eroare);
+            }
+        });
+    });
+</script>

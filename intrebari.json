@@ -1,0 +1,52 @@
+[
+  {
+    "intrebare": "1. În ce an a fost lansat modelul original Mini?",
+    "variante": ["1959", "1965", "1970", "1982"],
+    "corect": 0
+  },
+  {
+    "intrebare": "2. Cine a proiectat designul revoluționar al primului Mini?",
+    "variante": ["Ferdinand Porsche", "Sir Alec Issigonis", "Enzo Ferrari", "Colin Chapman"],
+    "corect": 1
+  },
+  {
+    "intrebare": "3. Ce companie deține în prezent marca Mini?",
+    "variante": ["Volkswagen", "BMW", "Ford", "Toyota"],
+    "corect": 1
+  },
+  {
+    "intrebare": "4. Cum se numește versiunea sportivă de top a modelelor Mini?",
+    "variante": ["M Sport", "AMG", "John Cooper Works (JCW)", "RS"],
+    "corect": 2
+  },
+  {
+    "intrebare": "5. În ce raliu faimos a câștigat Mini Cooper S de trei ori în anii '60?",
+    "variante": ["Raliul Dakar", "Raliul Monte Carlo", "Raliul Suediei", "Baja 1000"],
+    "corect": 1
+  },
+  {
+    "intrebare": "6. Cum se numește modelul SUV (crossover) al brandului Mini?",
+    "variante": ["Clubman", "Paceman", "Countryman", "Hatch"],
+    "corect": 2
+  },
+  {
+    "intrebare": "7. Ce inovație mecanică a permis primului Mini să ofere un interior atât de spațios?",
+    "variante": ["Motor amplasat în spate", "Motor transversal cu tracțiune față", "Caroserie din fibră de sticlă", "Lipsa portbagajului"],
+    "corect": 1
+  },
+  {
+    "intrebare": "8. În ce film celebru din 1969 apar trei mașini Mini Cooper implicate într-un jaf spectaculos?",
+    "variante": ["The French Connection", "Bullitt", "The Italian Job", "Gone in 60 Seconds"],
+    "corect": 2
+  },
+  {
+    "intrebare": "9. Care model Mini este cunoscut pentru 'ușile de hambar' (barn doors) în spate în loc de haion obișnuit?",
+    "variante": ["Mini Clubman", "Mini Roadster", "Mini Coupe", "Mini Cabrio"],
+    "corect": 0
+  },
+  {
+    "intrebare": "10. În ce an a fost relansat brandul sub forma 'Noul MINI' de către actualul proprietar?",
+    "variante": ["1995", "2001", "2006", "2010"],
+    "corect": 1
+  }
+]

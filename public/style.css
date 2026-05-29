@@ -1,0 +1,220 @@
+
+:root {
+    --bg-main: #121212;         
+    --card-bg: #1e1e1e;         
+    --header-bg: #0a0a0a;       
+    --border-color: #2d2d2d;    
+    --accent-color: #f39c12;    
+    --success-color: #10b981;   
+    --error-color: #ef4444;     
+    --text-main: #e5e5e5;       
+    --text-muted: #9ca3af;      
+    
+    --success-bg: rgba(16, 185, 129, 0.1);
+    --error-bg: rgba(239, 68, 68, 0.1);
+    --neutral-bg: #252525;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--header-bg);
+    color: #ffffff;
+    padding: 24px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+header hr { display: none; }
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+form, .results-wrapper {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
+    border: 1px solid var(--border-color);
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 32px;
+}
+
+legend {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--accent-color);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--neutral-bg);
+    color: var(--text-main);
+}
+
+label:hover {
+    border-color: var(--accent-color);
+    background: #2a2a2a;
+}
+
+input[type="radio"] {
+    margin-right: 12px;
+    accent-color: var(--accent-color);
+}
+
+button, .btn-primary {
+    display: block;
+    width: 100%;
+    background-color: var(--accent-color);
+    color: #000000; 
+    border: none;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+}
+
+button:hover, .btn-primary:hover {
+    background-color: #d68910;
+}
+
+.score-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.score-header h2 {
+    margin-top: 0;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.score-text {
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.premium-image-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.premium-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.question-card {
+    padding: 20px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    background-color: var(--bg-main);
+    border-left: 4px solid var(--border-color);
+}
+
+.card-success { border-left-color: var(--success-color); }
+.card-error { border-left-color: var(--error-color); }
+
+.question-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.option-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--neutral-bg);
+    border: 1px solid var(--border-color);
+}
+
+.option-correct {
+    border-color: var(--success-color);
+    background-color: var(--success-bg);
+}
+
+.option-correct .option-text {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.option-wrong {
+    border-color: var(--error-color);
+    background-color: var(--error-bg);
+}
+
+.option-wrong .option-text {
+    color: var(--error-color);
+}
+
+.option-neutral .option-text {
+    color: var(--text-muted);
+}
+
+.badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.option-correct .badge {
+    background-color: var(--success-color);
+    color: #ffffff;
+}
+
+.option-wrong .badge {
+    background-color: var(--error-color);
+    color: #ffffff;
+}
+
+.action-section {
+    margin-top: 40px;
+}

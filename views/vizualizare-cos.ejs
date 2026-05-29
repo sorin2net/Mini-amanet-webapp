@@ -1,0 +1,63 @@
+<div class="results-wrapper">
+    <h2 style="color: var(--accent-color); text-align: center; margin-bottom: 30px;">Coșul tău de colecționar</h2>
+    
+    <% if (typeof mesaj !== 'undefined' && mesaj) { %>
+        <div style="background-color: var(--success-color); color: #000; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 25px; border: 1px solid #4ade80;">
+             <%= mesaj %>
+        </div>
+    <% } %>
+
+    <% if (produseCos.length > 0) { %>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <% produseCos.forEach(function(item) { %>
+                <div style="display: flex; align-items: center; background: var(--bg-main); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    
+                    <img src="/images/<%= item.detalii.imagine %>" alt="<%= item.detalii.nume %>" style="width: 120px; height: 75px; object-fit: cover; border-radius: 4px; margin-right: 20px;">
+                    
+                    <div style="flex-grow: 1;">
+                        <h4 style="margin: 0 0 5px 0; color: var(--text-main);"><%= item.detalii.nume %></h4>
+                        <span style="color: var(--text-muted); font-size: 14px;"><%= item.detalii.pret %> € / buc</span>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-right: 25px; background: #1a1a1a; border-radius: 6px; padding: 5px;">
+                        <form action="/modifica-cos" method="POST" style="margin: 0; padding: 0; border: none; box-shadow: none; background: transparent;">
+                            <input type="hidden" name="id" value="<%= item.detalii.id %>">
+                            <input type="hidden" name="actiune" value="minus">
+                            <button type="submit" style="background-color: #333; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: auto; font-size: 16px;">-</button>
+                        </form>
+                        
+                        <span style="font-size: 16px; font-weight: bold; width: 20px; text-align: center; color: var(--text-main);"><%= item.cantitate %></span>
+                        
+                        <form action="/modifica-cos" method="POST" style="margin: 0; padding: 0; border: none; box-shadow: none; background: transparent;">
+                            <input type="hidden" name="id" value="<%= item.detalii.id %>">
+                            <input type="hidden" name="actiune" value="plus">
+                            <button type="submit" style="background-color: var(--accent-color); color: #000; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: auto; font-size: 16px;">+</button>
+                        </form>
+                    </div>
+                    
+                    <div style="min-width: 90px; text-align: right;">
+                        <strong style="color: var(--accent-color); font-size: 18px;"><%= item.detalii.pret * item.cantitate %> €</strong>
+                    </div>
+
+                </div>
+            <% }); %>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: right; padding-top: 20px; border-top: 2px solid var(--border-color);">
+            <h3 style="margin: 0 0 20px 0; color: var(--text-main);">Total: <span style="color: var(--success-color);"><%= total %> €</span></h3>
+            <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                <a href="/" class="btn-primary" style="background-color: #333; width: auto; padding: 12px 20px;">Mai adaugă produse</a>
+                
+                <form action="/finalizare-comanda" method="POST" style="margin: 0; padding: 0; background: transparent; border: none; box-shadow: none;">
+                    <button type="submit" class="btn-primary" style="width: auto; background-color: var(--accent-color); color: #000; padding: 12px 20px;">Finalizează Comanda</button>
+                </form>
+            </div>
+        </div>
+
+    <% } else { %>
+        <div style="text-align: center; color: var(--text-muted); padding: 40px 0;">
+            <p style="font-size: 18px; margin-bottom: 20px;">Nu ai adăugat încă nicio machetă în coș.</p>
+            <a href="/" class="btn-primary" style="width: auto; display: inline-block;">Întoarce-te la magazin</a>
+        </div>
+    <% } %>
+</div>

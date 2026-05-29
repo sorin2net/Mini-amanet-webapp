@@ -1,0 +1,16 @@
+[
+    {
+        "utilizator": "admin",
+        "parola": "$2b$10$fJcp/g2d9N1MwTK8fWU82.m3ZS03EvG49LBNcdasyf3YhiOizIzlC",
+        "nume": "Dumitriu",
+        "prenume": "Denis",
+        "rol": "Administrator"
+    },
+    {
+        "utilizator": "client1",
+        "parola": "$2b$10$dk.Y1jz8NPVy6zb8N2t.YOMej28vHGwy9dNrgVFHBEp/NYQIK5nRW",
+        "nume": "Popescu",
+        "prenume": "Ion",
+        "rol": "User"
+    }
+]

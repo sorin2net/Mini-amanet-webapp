@@ -1,0 +1,30 @@
+<form action="/verificare-autentificare" method="POST" style="max-width: 400px; margin: 0 auto;">
+    <h2 style="color: var(--accent-color); text-align: center; margin-top: 0;">Autentificare Cont</h2>
+    
+    <% if (typeof eroare !== 'undefined' && eroare) { %>
+        <div style="background-color: var(--error-bg); color: var(--error-color); padding: 10px; border-radius: 6px; border: 1px solid var(--error-color); margin-bottom: 20px; text-align: center; font-weight: bold;">
+            <%= eroare %>
+        </div>
+    <% } %>
+
+    <fieldset>
+        <label style="background: none; border: none; padding: 0;">
+            <span style="display: block; margin-bottom: 5px; color: var(--text-muted);">Nume Utilizator:</span>
+            <input type="text" name="utilizator" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-main); color: white; box-sizing: border-box;">
+        </label>
+        
+        <label style="background: none; border: none; padding: 0; margin-top: 15px;">
+            <span style="display: block; margin-bottom: 5px; color: var(--text-muted);">Parolă:</span>
+            <input type="password" name="parola" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-main); color: white; box-sizing: border-box;">
+        </label>
+    </fieldset>
+
+    <button type="submit">Autentificare</button>
+    <div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color);">
+        <span style="color: var(--text-muted);">Nu ai cont? </span>
+        <a href="/creare-cont" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">Creează unul acum</a>
+</div>
+<div style="text-align: center; margin-top: 15px;">
+        <a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">&larr; Înapoi la Magazin</a>
+</div>
+</form>

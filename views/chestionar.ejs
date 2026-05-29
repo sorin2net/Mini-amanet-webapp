@@ -1,0 +1,19 @@
+<h2>Testează-ți cunoștințele despre Mini!</h2>
+
+<form action="/rezultat-chestionar" method="POST">
+    <!-- parcurg array ul de intrebari creat dinamic deci pot adauga intrebari direct in json, nu hardcodate-->
+    <% for(let i = 0; i < intrebari.length; i++) { %>
+        <fieldset style="margin-bottom: 20px;">
+            <legend><strong><%= intrebari[i].intrebare %></strong></legend>
+            <% for(let j = 0; j < intrebari[i].variante.length; j++) { %>
+                <label>
+                    <input type="radio" name="q<%= i %>" value="<%= j %>" required>
+                    <%= intrebari[i].variante[j] %>
+                </label><br>
+            <% } %>
+
+        </fieldset>
+    <% } %>
+
+    <button type="submit" style="padding: 10px 20px; cursor: pointer;">Trimite răspunsurile</button>
+</form>

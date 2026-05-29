@@ -1,0 +1,32 @@
+<div class="results-wrapper" style="max-width: 600px; margin: 0 auto;">
+    <h2 style="color: var(--accent-color); text-align: center;">Panou de Administrare</h2>
+    <h3 style="color: var(--text-main); text-align: center; margin-bottom: 30px;">Adăugare Produs Nou</h3>
+
+    <form action="/admin/adaugare-produs" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <fieldset>
+            <label style="background: none; border: none; padding: 0;">
+                <span style="display: block; margin-bottom: 5px; color: var(--text-muted);">Nume Produs:</span>
+                <input type="text" name="nume" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-main); color: white; box-sizing: border-box;">
+            </label>
+
+            <label style="background: none; border: none; padding: 0; margin-top: 15px;">
+                <span style="display: block; margin-bottom: 5px; color: var(--text-muted);">Descriere:</span>
+                <textarea name="descriere" required rows="3" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-main); color: white; box-sizing: border-box; resize: vertical;"></textarea>
+            </label>
+
+            <label style="background: none; border: none; padding: 0; margin-top: 15px;">
+                <span style="display: block; margin-bottom: 5px; color: var(--text-muted);">Preț (€):</span>
+                <input type="number" name="pret" step="0.01" min="1.01" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-main); color: white; box-sizing: border-box;">
+            </label>
+
+            <label style="background: none; border: none; padding: 0; margin-top: 15px;">
+                <span style="display: block; margin-bottom: 5px; color: var(--text-muted);">Nume Fișier Imagine (ex: mini_11.jpg):</span>
+                <input type="text" name="imagine" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-main); color: white; box-sizing: border-box;">
+            </label>
+        </fieldset>
+
+        <button type="submit" style="width: 100%; margin-top: 20px;">Adaugă Produsul</button>
+    </form>
+</div>
