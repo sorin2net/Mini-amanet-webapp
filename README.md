@@ -2,6 +2,9 @@
 
 O aplicație web completă de tip marketplace, construită cu Node.js și Express, care simulează un magazin online de „automobile" Mini Cooper. Cei care citesc footer-ul vor descoperi că de fapt este vorba de machete de colecție la scară redusă. Restul — bine ați venit la Mini Amanet.
 
+public/screenshots/welcome_andSomeProducts.jpg
+
+
 ---
 
 ## Profesor coordonator și student
